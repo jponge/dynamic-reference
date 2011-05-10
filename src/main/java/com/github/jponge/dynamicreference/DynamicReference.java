@@ -42,4 +42,12 @@ public class DynamicReference<T> {
             lock.readLock().unlock();
         }
     }
+
+    public <R> R perform(Operation<R, T> operation, R defaultResult) {
+        try {
+            return this.perform(operation);
+        } catch (IllegalStateException ignored) {
+            return defaultResult;
+        }
+    }
 }
