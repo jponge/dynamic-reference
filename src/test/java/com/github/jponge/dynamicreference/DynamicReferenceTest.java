@@ -37,7 +37,7 @@ public class DynamicReferenceTest {
         reference.set("123");
         assertThat(reference.perform(countCharsOperation), is(3));
 
-        reference.discard();
+        reference = new DynamicReference<String>();
         assertThat(reference.perform(countCharsOperation, 666), is(666));
     }
 
